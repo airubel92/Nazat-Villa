@@ -1,0 +1,287 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tenant Information Portal</title>
+    <link href="https://fonts.googleapis.com/css2?family=Hind+Siliguri:wght@300;400;600;700&display=swap" rel="stylesheet">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    
+    <style>
+        :root {
+            --primary-color: #007bff;
+            --secondary-color: #0056b3;
+            --overlay-dark: rgba(0, 0, 0, 0.6);
+        }
+
+        body {
+            font-family: 'Hind Siliguri', sans-serif;
+            background-color: #f4f7f6;
+            color: #333;
+            overflow-x: hidden;
+        }
+
+        /* Background Image System for Sections */
+        .bg-section {
+            background-position: center;
+            background-size: cover;
+            background-repeat: no-repeat;
+            background-attachment: fixed; /* Parallax effect */
+            position: relative;
+        }
+
+        /* Header Update */
+        .main-header {
+            background-image: url('https://images.unsplash.com/photo-1486406146926-c627a92ad1ab?w=1600'); /* Header BG */
+            padding: 80px 0 60px;
+            color: white;
+            text-align: center;
+        }
+
+        .header-overlay {
+            position: absolute;
+            top: 0; left: 0; right: 0; bottom: 0;
+            background: linear-gradient(135deg, rgba(0,123,255,0.8), rgba(0,86,179,0.9));
+            z-index: 1;
+        }
+
+        .header-content {
+            position: relative;
+            z-index: 2;
+        }
+
+        .building-name-main { font-size: 3.5rem; font-weight: 800; margin-bottom: 0; text-transform: uppercase; letter-spacing: 2px; }
+        .building-name-sub { font-size: 1.5rem; font-weight: 300; opacity: 0.9; margin-bottom: 30px; }
+
+        .profile-img {
+            width: 160px; height: 160px;
+            object-fit: cover;
+            border: 6px solid rgba(255,255,255,0.3);
+            border-radius: 50%;
+            box-shadow: 0 10px 25px rgba(0,0,0,0.2);
+            margin-bottom: 20px;
+        }
+
+        /* Main Body Background */
+        .main-content-wrapper {
+            background-image: url('https://www.transparenttextures.com/patterns/cubes.png'); /* Pattern/Image for Body */
+            background-color: #f8f9fa;
+            padding: 60px 0;
+        }
+
+        /* Card Styling */
+        .card {
+            border: none;
+            border-radius: 15px;
+            box-shadow: 0 8px 20px rgba(0,0,0,0.08);
+            transition: all 0.3s ease;
+            background: rgba(255, 255, 255, 0.95);
+        }
+
+        .card:hover { transform: translateY(-10px); box-shadow: 0 15px 30px rgba(0,0,0,0.15); }
+
+        .rep-img {
+            width: 110px; height: 110px;
+            object-fit: cover;
+            border-radius: 50%;
+            margin-top: -55px;
+            border: 4px solid white;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+        }
+
+        /* Awareness Carousel (Slide) */
+        .awareness-carousel {
+            background: white;
+            border-radius: 20px;
+            overflow: hidden;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+            margin-top: 50px;
+        }
+
+        .carousel-item { height: 450px; position: relative; }
+        .carousel-item img { width: 100%; height: 100%; object-fit: cover; filter: brightness(0.6); }
+        .carousel-caption {
+            bottom: 20%;
+            background: rgba(0,0,0,0.4);
+            padding: 30px;
+            border-radius: 15px;
+            backdrop-filter: blur(5px);
+        }
+        .carousel-caption h2 { font-weight: 700; font-size: 2.5rem; }
+        .carousel-caption p { font-size: 1.5rem; font-style: italic; }
+
+        /* Footer */
+        .footer-info {
+            background-image: url('https://images.unsplash.com/photo-1497366216548-37526070297c?w=1600'); /* Footer BG */
+            background-color: #222;
+            color: white;
+            padding: 60px 0 20px;
+            position: relative;
+        }
+
+        .footer-overlay {
+            position: absolute;
+            top: 0; left: 0; right: 0; bottom: 0;
+            background: rgba(0, 0, 0, 0.85);
+            z-index: 1;
+        }
+
+        .footer-content { position: relative; z-index: 2; }
+
+        .developed-by {
+            font-size: 0.9rem;
+            color: #aaa;
+            margin-top: 30px;
+            border-top: 1px solid rgba(255,255,255,0.1);
+            padding-top: 20px;
+        }
+
+        .dev-name { color: #007bff; font-weight: 600; text-decoration: none; }
+
+        /* WhatsApp Button */
+        .whatsapp-section {
+            background: linear-gradient(135deg, #25D366, #128C7E);
+            color: white;
+            padding: 40px;
+            border-radius: 20px;
+            box-shadow: 0 10px 20px rgba(37, 211, 102, 0.3);
+        }
+
+        @media (max-width: 768px) {
+            .building-name-main { font-size: 2.2rem; }
+            .carousel-item { height: 350px; }
+            .carousel-caption h2 { font-size: 1.5rem; }
+            .carousel-caption p { font-size: 1.1rem; }
+        }
+    </style>
+</head>
+<body>
+
+    <header class="main-header bg-section">
+        <div class="header-overlay"></div>
+        <div class="container header-content">
+            <h1 class="building-name-main">নাজাত ভিলা</h1>
+            <p class="building-name-sub">মুন্সিবাড়ি-১</p>
+            
+            <img src="images/Israfil Monir.jpeg" alt="Main Person" class="profile-img">
+            <h2 class="fw-bold">ইসরাফিল মনির</h2>
+            <p class="lead mb-2">পেশা: বাড়ির মালিক ও মোতওয়াল্লী বাইতুন নাজাত</p>
+            <h3 class="fw-bold text-warning"><i class="fas fa-phone-alt"></i> +৮৮ ০১৯৪৭-৯১৩২৮৫</h3>
+        </div>
+    </header>
+
+    <div class="main-content-wrapper bg-section">
+        <main class="container">
+            
+            <div class="row justify-content-center text-center mt-5">
+                <div class="col-12 mb-5">
+                    <h2 class="fw-bold text-primary">আমাদের প্রতিনিধিত্বকারী ব্যক্তিবর্গ</h2>
+                    <hr class="mx-auto bg-primary" style="width: 80px; height: 3px;">
+                </div>
+                
+                <div class="col-lg-3 col-md-6 mb-5">
+                    <div class="card p-4">
+                        <img src="images/Nazmul.jpg" class="rep-img mx-auto" alt="Rep 1">
+                        <h4 class="mt-3 fw-bold">মোঃ নাজমুল হোসাইন</h4>
+                        <p class="text-muted">বড় ছেলে</p>
+                        <a href="tel:01700000000" class="btn btn-outline-primary rounded-pill btn-sm fw-bold">+৮৮ ০১৭৭১২৩১১১১</a>
+                    </div>
+                </div>
+                <div class="col-lg-3 col-md-6 mb-5">
+                    <div class="card p-4">
+                        <img src="images/Rubel.png" class="rep-img mx-auto" alt="Rep 2">
+                        <h4 class="mt-3 fw-bold">মোঃ আমিনুল ইসলাম</h4>
+                        <p class="text-muted">মেজো ছেলে </p>
+                        <a href="tel:01800000000" class="btn btn-outline-primary rounded-pill btn-sm fw-bold">+৮৮ ০১৭৭৪৪৫৪৫৬৬</a>
+                    </div>
+                </div>
+                <div class="col-lg-3 col-md-6 mb-5">
+                    <div class="card p-4">
+                        <img src="images/Faisal.jpg" class="rep-img mx-auto" alt="Rep 3">
+                        <h4 class="mt-3 fw-bold">মোঃ আমির ফয়সাল</h4>
+                        <p class="text-muted">সেজো ছেলে</p>
+                        <a href="tel:01900000000" class="btn btn-outline-primary rounded-pill btn-sm fw-bold">+৮৮ ০১৬২৫২৮৫৫৩৩</a>
+                    </div>
+                </div>
+                <div class="col-lg-3 col-md-6 mb-5">
+                    <div class="card p-4">
+                        <img src="images/Nadim.jpg" class="rep-img mx-auto" alt="Rep 4">
+                        <h4 class="mt-3 fw-bold">ওমর ফারুক</h4>
+                        <p class="text-muted">ছোট ছেলে</p>
+                        <a href="tel:01500000000" class="btn btn-outline-primary rounded-pill btn-sm fw-bold">+৮৮ ০১৩২১০৬১০১২</a>
+                    </div>
+                </div>
+            </div>
+
+            <div class="whatsapp-section my-5 text-center">
+                <i class="fab fa-whatsapp fa-4x mb-3"></i>
+                <h2 class="fw-bold">আমাদের হোয়াটসঅ্যাপ কমিউনিটিতে যোগ দিন</h2>
+                <p class="lead">ভবনের বা বিল্ডিংয়ের সকল আপডেট সবার আগে পেতে নিচের লিঙ্কে ক্লিক করুন।</p>
+                <a href="https://chat.whatsapp.com/CZaBAEmCd8LHCPwOeVXVXD" class="btn btn-light btn-lg rounded-pill fw-bold px-5 py-3 mt-3 shadow">Join WhatsApp Group</a>
+            </div>
+
+            <div class="row mt-5">
+                <div class="col-12 text-center mb-4">
+                    <h2 class="fw-bold text-danger">আসুন আমরা সচেতন হই</h2>
+                    <p class="text-muted">একটি উন্নত সমাজ গড়তে আপনার সহযোগিতা প্রয়োজন</p>
+                </div>
+                <div class="col-12">
+                    <div id="awarenessCarousel" class="carousel slide awareness-carousel" data-bs-ride="carousel">
+                        <div class="carousel-inner">
+                            <div class="carousel-item active" data-bs-interval="4000">
+                                <img src="https://images.unsplash.com/photo-1542601906990-b4d3fb778b09?w=1200" alt="Water Save">
+                                <div class="carousel-caption">
+                                    <h2 class="text-info"><i class="fas fa-tint"></i> পানির অপচয় রোধ করুন</h2>
+                                    <p>"প্রতিটি ফোঁটা মূল্যবান, অপচয় করবেন না।"</p>
+                                </div>
+                            </div>
+                            <div class="carousel-item" data-bs-interval="4000">
+                                <img src="https://images.unsplash.com/photo-1473341304170-971dccb5ac1e?w=1200" alt="Save Electricity">
+                                <div class="carousel-caption">
+                                    <h2 class="text-warning"><i class="fas fa-lightbulb"></i> বিদ্যুৎ সাশ্রয় করুন</h2>
+                                    <p>"অপ্রয়োজনে বাতি ও পাখা বন্ধ রাখুন, সুন্দর ভবিষ্যৎ গড়ুন।"</p>
+                                </div>
+                            </div>
+                            <div class="carousel-item" data-bs-interval="4000">
+                                <img src="https://images.unsplash.com/photo-1521220609214-a8552380c7a4?w=1200" alt="Save Gas">
+                                <div class="carousel-caption">
+                                    <h2 class="text-danger"><i class="fas fa-burn"></i> গ্যাস ব্যবহারে সচেতন হোন</h2>
+                                    <p>"রান্না শেষে চুলা নিভিয়ে ফেলুন, অগ্নিকাণ্ড থেকে নিরাপদ থাকুন।"</p>
+                                </div>
+                            </div>
+                        </div>
+                        <button class="carousel-control-prev" type="button" data-bs-target="#awarenessCarousel" data-bs-slide="prev">
+                            <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                        </button>
+                        <button class="carousel-control-next" type="button" data-bs-target="#awarenessCarousel" data-bs-slide="next">
+                            <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </main>
+    </div>
+
+    <footer class="footer-info bg-section">
+        <div class="footer-overlay"></div>
+        <div class="container footer-content text-center">
+            <div class="row">
+                <div class="col-md-12">
+                    <h3 class="fw-bold mb-4">ভবন বা বিল্ডিংয়ের ঠিকানা</h3>
+                    <p class="fs-5 mb-1"><i class="fas fa-map-marker-alt text-primary"></i> হোল্ডিং নং: ২২৪, ব্লক: জি, রোড: আশরাফিয়া মাদরাসা রোড </p>
+                    <p class="fs-5 mb-1">নূরেরচালা, ঢাকা - ১২১২</p>
+                    <p class="fs-5"><i class="fas fa-envelope text-primary"></i> ইমেইল: israfilmonir1193@gmail.com</p>
+                </div>
+            </div>
+
+            <div class="developed-by">
+                <p class="mb-1">© ২০২৬ সর্বস্বত্ব সংরক্ষিত | <strong>নাজাত বিল্ডিং ম্যানেজমেন্ট</strong></p>
+                <p>Developed by <a href="#" class="dev-name">Md. Aminul Islam (Rubel)</a></p>
+            </div>
+        </div>
+    </footer>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>
